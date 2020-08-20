@@ -82,21 +82,21 @@ def print_list():
         index += 1
     Console().print(table)
     x = 1
-    while x!= -1:
-        
+    while x != -1:
+
         x = int(input("Enter the index no. for getting complete links(-1 to quit): "))
-        if x== -1:
+        if x == -1:
             continue
-        org_x = sorted(organization_list, reverse=True)[x-1]
+        org_x = sorted(organization_list, reverse=True)[x - 1]
         try:
-            print("Name: "+ org_x.name )
-            print("IRC: "+ org_x.irc )
-            print("Organisation Link: "+ org_x.org_page )
-            print("Tech Stack: "+ (" ").join(org_x.tech_stack) )
-            print("Count: "+ str(org_x.count) )
+            print("Name: " + org_x.name)
+            print("IRC: " + org_x.irc)
+            print("Organisation Link: " + org_x.org_page)
+            print("Tech Stack: " + (" ").join(org_x.tech_stack))
+            print("Count: " + str(org_x.count))
             print("===========================================\n")
         except:
-            print('Organisation is missing some value. Kindly check on GSoc Website')
+            print("Organisation is missing some value. Kindly check on GSoc Website")
 
 
 headers = {
@@ -159,5 +159,5 @@ except Exception as e:
 finally:
 
     print("Script ran successfully!")
-   
+
     quit()
