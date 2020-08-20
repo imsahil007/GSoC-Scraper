@@ -13,6 +13,7 @@ Also shows the no. of times that organization was selected for GSoc in the perio
 + BeautifulSoup
 + Requests
 + Rich
++ yaspin
 
 ### Instructions :
 
