@@ -4,6 +4,8 @@ import yaml
 from bs4 import BeautifulSoup
 from rich.console import Console
 from rich.table import Table
+import time
+from yaspin import yaspin
 
 language = "python"
 URL = "https://summerofcode.withgoogle.com/organizations/"
@@ -95,41 +97,50 @@ headers = {
 page_no = 1
 org_index = 1
 language = str(input("Enter the language you want to filter out: "))
+animation = "|/-\\"
+idx = 0
 try:
-    while True:
-        params = (
-            ("page", str(page_no)),
-            ("page_size", "48"),
-        )
-        page_no += 1
 
-        response = requests.get(
-            "https://summerofcode.withgoogle.com/api/program/current/organization/",
-            headers=headers,
-            params=params,
-        )
 
-        json_data = yaml.load(json.dumps(response.json()), yaml.Loader)
+    with yaspin(text="Loading current orgs", color="yellow") as spinner:
+        while True:
+            params = (
+                ("page", str(page_no)),
+                ("page_size", "48"),
+            )
+            page_no += 1
 
-        for index in range(len(json_data["results"])):
-            if language_filter(json_data["results"][index]["technology_tags"]):
+            response = requests.get(
+                "https://summerofcode.withgoogle.com/api/program/current/organization/",
+                headers=headers,
+                params=params,
+            )
 
-                name = json_data["results"][index]["name"]
-                tech_stack = json_data["results"][index]["technology_tags"]
-                irc = json_data["results"][index]["irc_channel"]
-                org_page = URL + str(json_data["results"][index]["id"])
-                count = 1
-                current_org = Organization(name, irc, org_page, tech_stack, count)
-                organization_list.append(current_org)
+            json_data = yaml.load(json.dumps(response.json()), yaml.Loader)
 
-        if json_data["results"] == []:
-            break
-    
-    check_previous()
+            for index in range(len(json_data["results"])):
+                if language_filter(json_data["results"][index]["technology_tags"]):
+
+                    name = json_data["results"][index]["name"]
+                    tech_stack = json_data["results"][index]["technology_tags"]
+                    irc = json_data["results"][index]["irc_channel"]
+                    org_page = URL + str(json_data["results"][index]["id"])
+                    count = 1
+                    current_org = Organization(name, irc, org_page, tech_stack, count)
+                    organization_list.append(current_org)
+
+            if json_data["results"] == []:
+                break
+
+    spinner.ok("✅ ")
+    with yaspin(text="Counting previous year selection", color="yellow") as spinner:
+        check_previous()
+    spinner.ok("✅ ")
     print_list()
 
 except Exception as e:
     print(e)
+    
 finally:
 
     print("Script ran successfully!")
