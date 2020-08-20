@@ -113,8 +113,7 @@ headers = {
 page_no = 1
 org_index = 1
 language = str(input("Enter the language you want to filter out: "))
-animation = "|/-\\"
-idx = 0
+
 try:
 
     with yaspin(text="Loading current orgs", color="yellow") as spinner:
