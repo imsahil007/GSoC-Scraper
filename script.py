@@ -24,7 +24,7 @@ class Organization:
         return self.name + "count= " + str(self.count)
 
     def __eq__(self, other):
-        return self.count == other.count 
+        return self.count == other.count
 
     def __lt__(self, other):
         return self.count < other.count
@@ -48,7 +48,7 @@ def check_previous():
         response = requests.get(archive_url)
         soup = BeautifulSoup(response.content, "html.parser")
         orgs = soup.find_all("li", {"class": "organization-card__container"})
-    
+
         for org in orgs:
             name = org["aria-label"]
             for organization in organization_list:
@@ -63,14 +63,14 @@ def print_list():
     table.add_column("S.No", justify="right", style="cyan")
     table.add_column("Org-name", style="magenta")
     table.add_column("Count", style="white")
-    table.add_column("IRC", style="red",width=20)
-    table.add_column("Org Link", style="blue",width=20)
+    table.add_column("IRC", style="red", width=20)
+    table.add_column("Org Link", style="blue", width=20)
     table.add_column("Tech stack", justify="right", style="green")
     index = 1
-    for organization in sorted(organization_list, reverse = True):
+    for organization in sorted(organization_list, reverse=True):
         tech = ""
         for t in organization.tech_stack:
-            tech = tech + " "+ t
+            tech = tech + " " + t
         table.add_row(
             str(index),
             str(organization.name),
@@ -100,7 +100,6 @@ language = str(input("Enter the language you want to filter out: "))
 animation = "|/-\\"
 idx = 0
 try:
-
 
     with yaspin(text="Loading current orgs", color="yellow") as spinner:
         while True:
@@ -140,7 +139,7 @@ try:
 
 except Exception as e:
     print(e)
-    
+
 finally:
 
     print("Script ran successfully!")
