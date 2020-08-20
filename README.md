@@ -41,6 +41,9 @@ Enter the language you want to filter out: python
 
 ![opencv](res/opencv.png)
 
+## Todos:
+[x] Links aren't working in table
+> Note: Added a sentinal controlled loop for printing index wise details
 
 ### Contributing:
 + Fork the repo.
