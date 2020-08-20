@@ -6,8 +6,9 @@ Also shows the no. of times that organization was selected for GSoc in the perio
 
 # Libraries used:
  [Requests](http://docs.python-requests.org/en/master/)  
- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
- [Rich](https://github.com/willmcgugan/rich)
+ [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)  
+ [Rich](https://github.com/willmcgugan/rich)  
+ [yaspin](https://github.com/pavdmyt/yaspin/)
 
 ### Requirements :
 + BeautifulSoup
