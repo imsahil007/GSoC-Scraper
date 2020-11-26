@@ -29,7 +29,10 @@ cd GSoC-Scraper
 pip3 install -r requirements.txt
 
 # Run the script 
-python3 script.py
+python3 year_wise.py
+
+# python3 script.py 
+# "script.py" not working as 2021 list has been updated yet. Will work on Jan/feb
 
 # Enter the language of choice when asked.
 # Example: 

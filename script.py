@@ -7,6 +7,10 @@ from rich.table import Table
 import time
 from yaspin import yaspin
 
+# print(
+#     "This code will work when GSOC updates the 2021 list on their website. Use script_2020.py for fetching year wise records until then"
+# )
+# quit()
 language = "python"
 URL = "https://summerofcode.withgoogle.com/organizations/"
 organization_list = []
@@ -38,7 +42,7 @@ def language_filter(tech_stack_list):
 
 
 def check_previous():
-    for year in range(2016, 2020):
+    for year in range(2016, 2021):
         archive_url = (
             "https://summerofcode.withgoogle.com/archive/"
             + str(year)
